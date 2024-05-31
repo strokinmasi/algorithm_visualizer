@@ -1,6 +1,10 @@
-function Node() {
+import "./node.css";
+
+import { default as React } from 'react';
+
+function Node({ color }) {
     return (
-        <div> hello </div>
+        <div className="node" style={{ backgroundColor : color }}></div>
     )
 }
 
