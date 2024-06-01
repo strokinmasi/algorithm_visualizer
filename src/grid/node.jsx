@@ -2,9 +2,13 @@ import "./node.css";
 
 import { default as React } from 'react';
 
-function Node({ color }) {
+function Node({ color, onClick }) {
     return (
-        <div className="node" style={{ backgroundColor : color }}></div>
+        <div
+            className="node"
+            style={{ backgroundColor: color }}
+            onClick={onClick}
+        />
     )
 }
 
