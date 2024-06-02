@@ -1,140 +1,37 @@
-import React, { useState } from "react";
-import "./gridbase.css";
-import Node from "./node";
+import React, { createContext, useContext, useState } from 'react';
 
-function Gridbase() {
+const GridContext = createContext();
 
+export function Gridbase({ children }) {
     const [grid, setGrid] = useState(createInitialGrid());
     const [startNode, setStartNode] = useState("");
     const [endNode, setEndNode] = useState("");
 
     function createInitialGrid() {
         let initialGrid = [];
-        for (let row = 0; row < 10; row++) {
-            let gridRow = [];
-            for (let col = 0; col < 10; col++) {
-                gridRow.push({
-                    id: `${row}-${col}`,
+        for (let y = 0; y < 10; y++) {
+            let row = [];
+            for (let x = 0; x < 10; x++) {
+                row.push({
+                    id: `${x}-${y}`,
                     color: "grey",
                     isStart: false,
-                    isEnd: false
+                    isEnd: false,
+                    prevnode: [-1, -1]
                 });
             }
-            initialGrid.push(gridRow);
+            initialGrid.push(row);
         }
         return initialGrid;
     }
 
-    // function findNode(row, col, color) {
-    //     const newGrid = grid.map((gridRow, rowIndex) => {
-    //         if (rowIndex == row) {
-    //             return gridRow.map((node, colIndex) => {
-    //                 if (colIndex == col) {
-    //                     return {
-    //                         ...node,
-    //                         color: color
-    //                     }
-    //                 }
-    //                 return node;
-    //             });
-    //         } else {
-    //             return gridRow;
-    //         }
-    //     });
-    //     setGrid(newGrid);
-    // }
-
-    function PlacePathNode(row, col) {
-
-        if (startNode !== -1 && endNode !== -1) {
-            return
-        }
-
-        if (startNode === -1) {
-            const newGrid = grid.map((gridRow, rowIndex) => {
-                if (rowIndex === row) {
-                    return gridRow.map((node, colIndex) => {
-                        if (colIndex === col && node.color !== "red") {
-                            setStartNode(row, col);
-                            return {
-                                ...node,
-                                color: "blue",
-                            }
-                        }
-                        return node;
-                    });
-                } else {
-                    return gridRow;
-                }
-            });
-            setGrid(newGrid);
-
-        } else if (endNode === -1) {
-            const newGrid = grid.map((gridRow, rowIndex) => {
-                if (rowIndex === row) {
-                    return gridRow.map((node, colIndex) => {
-                        if (colIndex === col && node.color !== "blue") {
-                            setEndNode(row, col);
-                            return {
-                                ...node,
-                                color: "red",
-
-                            }
-                        }
-                        return node;
-                    });
-                } else {
-                    return gridRow;
-                }
-            });
-            setGrid(newGrid);
-
-        } else {
-            return
-        }
-    }
-
-    const reset = () => {
-        const newGrid = grid.map(gridRow => {
-            return gridRow.map(node => {
-                return { ...node, color: "grey" }
-            });
-        });
-        setGrid(newGrid);
-        setStartNode("");
-        setEndNode("");
-    }
-
-    const checkStartOrEnd = (startOrEnd) => {
-        if (startOrEnd === 0 && startNode === "") {
-            setStartNode(-1)
-        } else if (startOrEnd === 1 && endNode === "") {
-            setEndNode(-1)
-        } else {
-            return
-        }
-    }
-
     return (
-        <div className="grid">
-            {console.log(endNode)}
-            {console.log(startNode)}
-            {grid.map((gridRow, rowIndex) => (
-                <div className="gridRow" key={rowIndex}>
-                    {gridRow.map((node, colIndex) => (
-                        <Node
-                            color={node.color}
-                            key={node.id}
-                            onClick={() => PlacePathNode(rowIndex, colIndex)}
-                        />
-                    ))}
-                </div>
-            ))}
-            <button onClick={() => checkStartOrEnd(0)}>place start node</button>
-            <button onClick={() => checkStartOrEnd(1)}>place end node</button>
-            <button onClick={() => reset()}>reset</button>
-        </div>
+        <GridContext.Provider value={{ grid, setGrid, startNode, setStartNode, endNode, setEndNode }}>
+            {children}
+        </GridContext.Provider>
     );
 }
 
-export default Gridbase;
+export function useGridContext() {
+    return useContext(GridContext);
+}
