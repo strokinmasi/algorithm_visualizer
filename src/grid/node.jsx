@@ -1,4 +1,4 @@
-import "./Node.css";
+import "./node.css";
 
 import { default as React } from 'react';
 

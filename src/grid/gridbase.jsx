@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import './Gridbase.css';
-import Gridsizing from './Gridsizing';
-import Node from './Node';
+import './gridbase.css';
+import Gridsizing from './gridsizing';
+import Node from './node';
 
 function Gridbase() {
 
