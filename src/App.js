@@ -1,5 +1,5 @@
 import './App.css';
-import Gridbase from './Grid/Gridbase';
+import Gridbase from './grid/gridbase';
 
 function App() {
   return (
