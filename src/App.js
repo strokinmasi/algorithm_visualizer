@@ -1,15 +1,10 @@
 import './App.css';
-import Djikstra from './algorithms/djikstra';
-import { Gridbase } from './grid/gridbase';
-import Pathing from './grid/pathing';
+import Gridbase from './Grid/Gridbase';
 
 function App() {
   return (
     <div className="App">
-      <Gridbase>
-        <Pathing/>
-        <Djikstra/>
-      </Gridbase>
+      <Gridbase/>
     </div>
   );
 }

@@ -1,14 +1,27 @@
-import "./node.css";
+import "./Node.css";
 
 import { default as React } from 'react';
 
-function Node({ color, onClick, prevNode }) {
+function Node({ onClick, prevNode, type }) {
+
+    const getNodeClass = () => {
+        switch (type) {
+            case 'start':
+                return 'node-start';
+            case 'end':
+                return 'node-end';
+            case 'wall':
+                return 'node-wall';
+            default:
+                return '';
+        }
+    };
+
     return (
         <div
-            className="node"
-            style={{ backgroundColor: color }}
+            className={`node ${getNodeClass()}`}
             onClick={onClick}
-            prevnode={prevNode}
+            prevNode={prevNode}
         />
     )
 }
