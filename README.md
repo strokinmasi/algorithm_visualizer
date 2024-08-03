@@ -2,6 +2,16 @@
 
 This project is a algorithm visualizer for pathfinding algorithms, created to introduce as much customizability to pathfinding algorithms as possible.
 
+## setup
+
+to install all dependancies:
+
+npm install
+
+to run the server:
+
+npm start
+
 ## build plan
 
 1. create the grid base

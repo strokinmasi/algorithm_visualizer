@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Dijkstra from '../algorithms/dijkstra';
 import './gridbase.css';
 import Gridsizing from './gridsizing';
 import Node from './node';
@@ -14,23 +15,27 @@ function Gridbase() {
 
     const [nodeType, setNodeType] = useState('default');
 
-    // Basic memo that holds the initial node settings to create the initial grid
-    const initialNode = useMemo(() => ({
-        type: 'default',
-        prevNode: null
-    }), []);
+    const initialNode = (row, col) => ({
+        type: "default",
+        prevnode: null,
+        row: row,
+        column: col
+    });
 
     // useEffect that initialises and also updates the grid everytime the dimensions change
+
     useEffect(() => {
-        const initialGrid = Array(rowLength).fill(null).map(() => Array(colLength).fill(initialNode));
+        const initialGrid = Array(rowLength).fill(null).map((_, rowIndex) => 
+            Array(colLength).fill(null).map((_, colIndex) => initialNode(rowIndex, colIndex))
+        );
         setGrid(initialGrid);
-    }, [rowLength, colLength, initialNode]);
+    }, [rowLength, colLength]);
     
 
     // Handles what happens when a node is clicked
     const handleNodeClick = (row, col) => {
         if ((checkNodeType('start') && nodeType === 'start') || (checkNodeType('end') && nodeType === 'end')) {
-            return alert('kys')
+            return alert('stop! start or stop already exists!')
         }
         // Create a new grid with updated properties for the clicked node
         const newGrid = grid.map((rowArray, rowIndex) =>
@@ -58,19 +63,22 @@ function Gridbase() {
 
     return (
         <div className="grid">
+            <Dijkstra grid={grid}/>
             <Gridsizing setRowLength={setRowLength} setColLength={setColLength} />
             <button onClick={() => setNodeType('wall')}>Place Wall Node</button>
             <button onClick={() => setNodeType('start')}>Place Start Node</button>
             <button onClick={() => setNodeType('end')}>Place End Node</button>
             <button onClick={() => setNodeType('default')}>Delete Node</button>
             {grid.map((row, rowIndex) => (
-                <div className="row">
+                <div className="row" key={`row-${rowIndex}`}>
                     {row.map((node, colIndex) => (
                         <Node
                             key={`${rowIndex}-${colIndex}`}
                             onClick={() => handleNodeClick(rowIndex, colIndex)}
-                            prevNode={node.prevNode}
                             type={node.type}
+                            prevnode={node.prevnode}
+                            row={rowIndex}
+                            column={colIndex}
                         />
                     ))}
                 </div>
