@@ -37,3 +37,19 @@ Achieved/
 Each node now will have its visited information through the css colour/class of the node. Dijkstra is starting to work
 as well, I have implemented basic operations and tools like a queue, a node identification function and also a function
 to add all nodes surrounding a specific node to the queue a huge step for dijkstra.
+
+August 5th :
+
+Notes/
+
+Took a long time to realise how states really work in react, they dont just update whenever I want them to and also had to learn about asynchronous functions and delay to allow the pathfinding to look cleaner.
+
+Achieved/
+
+Great achievement today, I'm almost completely done with breadth first search (I realised its not appropriate to call it Dijkstra as Dijkstra only works for weighted graphs). I completely rehauled the Dijkstra file and now, the code is almost finished.
+
+Goals/
+Adding this section for future devlogs :>
+- I want to completely polish off the breadth first searching algorithm
+- I want to start implementing another algorithm, the next one will defintiely be depth-first search
+- I want to make the graph look cleaner, probably will need to learn how to use something like material-ui

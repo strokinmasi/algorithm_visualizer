@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Dijkstra from '../algorithms/dijkstra';
+import BFS from '../algorithms/BFS';
 import './gridbase.css';
 import Gridsizing from './gridsizing';
 import Node from './node';
@@ -41,7 +41,7 @@ function Gridbase() {
         const newGrid = grid.map((rowArray, rowIndex) =>
             rowArray.map((node, colIndex) => {
                 if (rowIndex === row && colIndex === col) {
-                    // Toggle color
+                    // Toggle type
                     return { ...node, type: nodeType};
                 }
                 return node;
@@ -61,9 +61,18 @@ function Gridbase() {
         return false;
     };
 
+    const handleBFS = () => {
+        BFS(grid, setGrid);
+    };
+
+    const handleLook = () => {
+        console.log(grid[1][1])
+    };
+
     return (
         <div className="grid">
-            <Dijkstra grid={grid}/>
+            <button onClick={handleLook}>look</button>
+            <button onClick={handleBFS}>Run BFS</button>
             <Gridsizing setRowLength={setRowLength} setColLength={setColLength} />
             <button onClick={() => setNodeType('wall')}>Place Wall Node</button>
             <button onClick={() => setNodeType('start')}>Place Start Node</button>

@@ -5,18 +5,18 @@
     border: 2px solid black;
 }
 
-.node-start {
+.start {
     background-color: green;
 }
 
-.node-end {
+.end {
     background-color: red;
 }
 
-.node-wall {
+.wall {
     background-color: black;
 }
 
-.node-visited {
+.visited {
     background-color: purple; /* Example color for visited nodes */
 }

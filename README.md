@@ -12,7 +12,7 @@ to run the server:
 
 npm start
 
-## build plan
+## extremely rough build plan
 
 1. create the grid base
 2. make the grid base size dynamic
