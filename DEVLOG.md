@@ -11,7 +11,7 @@ Overall with this project I want to simply achieve :>
 
 current goals, updated with every future log update :>
 
-- need to implement depth-first search next
+- need to implement A* searching algorithm
 - need to implement material-ui
 
 # LOGS
@@ -65,3 +65,13 @@ Achieved/
 
 - completely implemented a decent visual for the BFS and pathing
 - implemented a gridUtils file to keep all helper functions, may make one for algorithms later
+
+### LOG 5 : August 6th
+
+Notes/
+
+DFS was very quick as it was very similar to BFS, it just used a stack instead of a queue. I also realised that DFS didn't actually always find the shortest path, infact most of the time it would not find a short path but a long winding path. I think I will implement the A* path finding algorithm next
+
+Achieved/
+
+- finished DFS file although it looks mostly like the BFS file

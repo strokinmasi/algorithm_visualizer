@@ -31,9 +31,9 @@ export const checkNodeType = (grid, type) => {
     return false;
 }
 
-export const checkEnd = (queue) => {
-    for (let node of queue) {
-        if (node.type == 'end') {
+export const checkEnd = (list) => {
+    for (let node of list) {
+        if (node.type === 'end') {
             return true;
         }
     }

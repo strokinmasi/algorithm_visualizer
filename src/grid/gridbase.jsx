@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BFS from '../algorithms/BFS';
+import DFS from '../algorithms/DFS';
 import './gridbase.css';
 import Gridsizing from './gridsizing';
 import { checkNodeType } from './gridutils';
@@ -55,9 +56,14 @@ function Gridbase() {
         BFS(grid, setGrid);
     };
 
+    const handleDFS = () => {
+        DFS(grid, setGrid);
+    };
+
     return (
         <div className="grid">
             <button onClick={handleBFS}>Run BFS</button>
+            <button onClick={handleDFS}>Run DFS</button>
             <Gridsizing setRowLength={setRowLength} setColLength={setColLength} />
             <button onClick={() => setNodeType('wall')}>Place Wall Node</button>
             <button onClick={() => setNodeType('start')}>Place Start Node</button>
