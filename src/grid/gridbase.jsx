@@ -1,10 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import BFS from '../algorithms/BFS';
+import pathing from '../algorithms/pathing';
 import './gridbase.css';
 import Gridsizing from './gridsizing';
 import Node from './node';
 
 function Gridbase() {
+
+    const findNodeByType = (type) => {
+        for (let rowIndex of grid) {
+            for (let node of rowIndex) {
+                if (node.type === type) {
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
+
+    const findNodeByCoord = (row, col) => {
+        for (let rowIndex of grid) {
+            for (let node of rowIndex) {
+                if (node.row === row && node.column === col) {
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
+
+    const checkNodeType = (type) => {
+        for (let row of grid) {
+            for (let node of row) {
+                if (node.type === type) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
 
     // State that holds the entire grid
     const [grid, setGrid] = useState([]);
@@ -50,19 +84,12 @@ function Gridbase() {
         setGrid(newGrid);
     };
 
-    const checkNodeType = (type) => {
-        for (let row of grid) {
-            for (let node of row) {
-                if (node.type === type) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    const handleBFS = () => {
+        BFS(grid, setGrid, findNodeByType, findNodeByCoord);
     };
 
-    const handleBFS = () => {
-        BFS(grid, setGrid);
+    const handlePath = () => {
+        pathing(grid, setGrid, findNodeByType, findNodeByCoord);
     };
 
     const handleLook = () => {
@@ -73,6 +100,7 @@ function Gridbase() {
         <div className="grid">
             <button onClick={handleLook}>look</button>
             <button onClick={handleBFS}>Run BFS</button>
+            <button onClick={handlePath}>Run path</button>
             <Gridsizing setRowLength={setRowLength} setColLength={setColLength} />
             <button onClick={() => setNodeType('wall')}>Place Wall Node</button>
             <button onClick={() => setNodeType('start')}>Place Start Node</button>

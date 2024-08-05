@@ -1,26 +1,4 @@
-function BFS(grid, setGrid) {
-
-    const findNodeByType = (type) => {
-        for (let rowIndex of grid) {
-            for (let node of rowIndex) {
-                if (node.type === type) {
-                    return node;
-                }
-            }
-        }
-        return null;
-    }
-
-    const findNodeByCoord = (row, col) => {
-        for (let rowIndex of grid) {
-            for (let node of rowIndex) {
-                if (node.row === row && node.column === col) {
-                    return node;
-                }
-            }
-        }
-        return null;
-    }
+function BFS(grid, setGrid, findNodeByType, findNodeByCoord) {
 
     const start = findNodeByType('start');
     const end = findNodeByType('end');
@@ -32,7 +10,6 @@ function BFS(grid, setGrid) {
 
     const queue = [start];
     const visited = new Set();
-    const path = {}; // To reconstruct the path
 
     const checkEnd = () => {
         for (let node of queue) {
@@ -46,7 +23,9 @@ function BFS(grid, setGrid) {
     async function BFS() {
         while (queue.length > 0 && !checkEnd()) {
             const currentNode = queue[0]
-            visited.add(currentNode)
+            if (currentNode !== start) {
+                visited.add(currentNode)
+            }  
             queue.shift();
 
             const row = currentNode.row
@@ -61,8 +40,11 @@ function BFS(grid, setGrid) {
 
             for (let coords of cardinallyAdjacentCoords) {
                 const adjacentNode = findNodeByCoord(coords[0], coords[1])
-                if (adjacentNode && !visited.has(adjacentNode) && !queue.includes(adjacentNode)) {
-                    adjacentNode.prevNode = currentNode
+                if (adjacentNode &&
+                    !visited.has(adjacentNode) &&
+                    !queue.includes(adjacentNode) &&
+                    adjacentNode.type !== 'start') {
+                    adjacentNode.prevnode = currentNode
                     queue.push(adjacentNode)
                 }
             }
@@ -71,7 +53,7 @@ function BFS(grid, setGrid) {
 
             for (let row of newGrid) {
                 for (let node of row) {
-                    node.type = node.prevNode ? 'visited' : node.type
+                    node.type = visited.has(node) ? 'visited' : node.type
                 }
             }
             setGrid([...newGrid]);
@@ -79,8 +61,12 @@ function BFS(grid, setGrid) {
         }
     }
 
-    BFS()
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
+    BFS()
+    
     // const newGrid = grid.map(row => 
     //     row.map(node => ({
     //         ...node,
@@ -88,11 +74,6 @@ function BFS(grid, setGrid) {
     //     }))
     // );
     // setGrid(newGrid);
-
-    function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    
 }
 
 export default BFS;

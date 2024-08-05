@@ -42,14 +42,17 @@ August 5th :
 
 Notes/
 
-Took a long time to realise how states really work in react, they dont just update whenever I want them to and also had to learn about asynchronous functions and delay to allow the pathfinding to look cleaner.
+Took a long time to realise how states really work in react, they dont just update whenever I want them to and also had to learn about asynchronous functions and delay to allow the pathfinding to look cleaner. I think I may need to add a helper function section of the code
 
 Achieved/
 
 Great achievement today, I'm almost completely done with breadth first search (I realised its not appropriate to call it Dijkstra as Dijkstra only works for weighted graphs). I completely rehauled the Dijkstra file and now, the code is almost finished.
+
+I managed to finish the BFS later in the day, however I had to make two seperate buttons, one to search from start to end and the other to create the path.
 
 Goals/
 Adding this section for future devlogs :>
 - I want to completely polish off the breadth first searching algorithm
 - I want to start implementing another algorithm, the next one will defintiely be depth-first search
 - I want to make the graph look cleaner, probably will need to learn how to use something like material-ui
+- need to create a helper function file that will contain all the helper functions

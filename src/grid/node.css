@@ -20,3 +20,7 @@
 .visited {
     background-color: purple; /* Example color for visited nodes */
 }
+
+.path {
+    background-color: yellow;
+}
