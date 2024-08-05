@@ -2,16 +2,21 @@
 
 This project is a algorithm visualizer for pathfinding algorithms, created to introduce as much customizability to pathfinding algorithms as possible.
 
-With this project I want to simply achieve:
+Overall with this project I want to simply achieve :>
 
 - I want to learn how to setup nice looking UI
 - I want to learn the basic algorithms and how they work
 - I want to learn to use react and useStates etc
 - I want to learn javascript, a very common coding language that can be used for a variety of tasks
 
-## LOGS
+current goals, updated with every future log update :>
 
-July 30th : 
+- need to implement depth-first search next
+- need to implement material-ui
+
+# LOGS
+
+### LOG 1 : July 30th
 
 Notes/
 
@@ -20,11 +25,12 @@ happy with my previous attempt and therefore I started over.
 
 Achieved/
 
-I managed to recreate a grid that will be used to display the algorithms, also implemented nodes that will be later
-used to create start nodes, wall nodes, end nodes etc.
+- created basic interactable grid
+- implemented different node types and node click functionality
+- node types include, wall, start node, end node, empty node
 
 
-August 4th :
+### LOG 2 : August 4th
 
 Notes/
 
@@ -34,25 +40,28 @@ project, to add a weighted graph or grid later.
 
 Achieved/
 
-Each node now will have its visited information through the css colour/class of the node. Dijkstra is starting to work
-as well, I have implemented basic operations and tools like a queue, a node identification function and also a function
-to add all nodes surrounding a specific node to the queue a huge step for dijkstra.
+- started implementation of BFS, learning how to manipulate nodes
+- created a tool system
+- clicking on a node will do different actions depending on what tool is selected
 
-August 5th :
+### LOG 3 : August 5th
 
 Notes/
 
-Took a long time to realise how states really work in react, they dont just update whenever I want them to and also had to learn about asynchronous functions and delay to allow the pathfinding to look cleaner. I think I may need to add a helper function section of the code
+Took a long time to realise how states really work in react, they dont just update whenever I want them to and also had to learn about asynchronous functions and delay to allow the pathfinding to look cleaner. I think I may need to add a helper function section of the code. Will be adding that to the goals
 
 Achieved/
 
-Great achievement today, I'm almost completely done with breadth first search (I realised its not appropriate to call it Dijkstra as Dijkstra only works for weighted graphs). I completely rehauled the Dijkstra file and now, the code is almost finished.
+- almost fully implemented the BFS search algorithm
+- added the new node "visited" to show a node has been searched
 
-I managed to finish the BFS later in the day, however I had to make two seperate buttons, one to search from start to end and the other to create the path.
+### LOG 4 : August 6th
 
-Goals/
-Adding this section for future devlogs :>
-- I want to completely polish off the breadth first searching algorithm
-- I want to start implementing another algorithm, the next one will defintiely be depth-first search
-- I want to make the graph look cleaner, probably will need to learn how to use something like material-ui
-- need to create a helper function file that will contain all the helper functions
+Notes/
+
+learned more about asynchronous functions in order to get the pathing and the BFS search to actually visually display through a delayed animation. This is my first search algorithm completely finished!
+
+Achieved/
+
+- completely implemented a decent visual for the BFS and pathing
+- implemented a gridUtils file to keep all helper functions, may make one for algorithms later

@@ -1,27 +1,20 @@
-function BFS(grid, setGrid, findNodeByType, findNodeByCoord) {
+import { checkEnd, delay, findNodeByCoord, findNodeByType } from '../grid/gridutils';
 
-    const start = findNodeByType('start');
-    const end = findNodeByType('end');
+async function BFS(grid, setGrid) {
+
+    const start = findNodeByType(grid, 'start');
+    const end = findNodeByType(grid, 'end');
 
     if (!start || !end) {
-        console.error('Start or End node not found!');
-        return;
+        return alert('Start or End node not found!');
     }
 
     const queue = [start];
     const visited = new Set();
+    const path = [];
 
-    const checkEnd = () => {
-        for (let node of queue) {
-            if (node.type == 'end') {
-                return true;
-            }
-        }
-        return false;
-    }
-    
     async function BFS() {
-        while (queue.length > 0 && !checkEnd()) {
+        while (queue.length > 0 && !checkEnd(queue)) {
             const currentNode = queue[0]
             if (currentNode !== start) {
                 visited.add(currentNode)
@@ -39,7 +32,7 @@ function BFS(grid, setGrid, findNodeByType, findNodeByCoord) {
             ];
 
             for (let coords of cardinallyAdjacentCoords) {
-                const adjacentNode = findNodeByCoord(coords[0], coords[1])
+                const adjacentNode = findNodeByCoord(grid, coords[0], coords[1])
                 if (adjacentNode &&
                     !visited.has(adjacentNode) &&
                     !queue.includes(adjacentNode) &&
@@ -61,19 +54,28 @@ function BFS(grid, setGrid, findNodeByType, findNodeByCoord) {
         }
     }
 
-    function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+    async function pathing() {
+        let currentNode = end.prevnode
+        while (currentNode !== start) {
+            path.push(currentNode)
+            currentNode = currentNode.prevnode
+            const newGrid = grid.map(row => 
+                row.map(node => ({
+                    ...node,
+                    type: path.includes(node) ? 'path' : node.type
+                }))
+            );
+            setGrid(newGrid);
+            await delay(50);
+        }
+    
     }
 
-    BFS()
+    await BFS();
+    if (checkEnd(queue)) {
+        await pathing();
+    }
     
-    // const newGrid = grid.map(row => 
-    //     row.map(node => ({
-    //         ...node,
-    //         type: node.prevNode ? 'visited' : node.type
-    //     }))
-    // );
-    // setGrid(newGrid);
 }
 
 export default BFS;
