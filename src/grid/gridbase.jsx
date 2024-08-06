@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Astar from '../algorithms/Astar';
 import BFS from '../algorithms/BFS';
 import DFS from '../algorithms/DFS';
 import './gridbase.css';
@@ -12,8 +13,8 @@ function Gridbase() {
     const [grid, setGrid] = useState([]);
 
     // States that contain the number of columns and rows in the grid
-    const [rowLength, setRowLength] = useState(5);
-    const [colLength, setColLength] = useState(5);
+    const [rowLength, setRowLength] = useState(10);
+    const [colLength, setColLength] = useState(10);
 
     const [nodeType, setNodeType] = useState('default');
 
@@ -21,7 +22,8 @@ function Gridbase() {
         type: "default",
         prevnode: null,
         row: row,
-        column: col
+        column: col,
+        distfromstart: 0
     });
 
     // useEffect that initialises and also updates the grid everytime the dimensions change
@@ -60,10 +62,15 @@ function Gridbase() {
         DFS(grid, setGrid);
     };
 
+    const handleAstar = () => {
+        Astar(grid, setGrid);
+    };
+
     return (
         <div className="grid">
             <button onClick={handleBFS}>Run BFS</button>
             <button onClick={handleDFS}>Run DFS</button>
+            <button onClick={handleAstar}>Run Astar</button>
             <Gridsizing setRowLength={setRowLength} setColLength={setColLength} />
             <button onClick={() => setNodeType('wall')}>Place Wall Node</button>
             <button onClick={() => setNodeType('start')}>Place Start Node</button>

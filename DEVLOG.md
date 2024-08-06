@@ -11,8 +11,9 @@ Overall with this project I want to simply achieve :>
 
 current goals, updated with every future log update :>
 
-- need to implement A* searching algorithm
+- need to implement wall functionality
 - need to implement material-ui
+- need to implement grid cleanup after every search algorithm run
 
 # LOGS
 
@@ -75,3 +76,16 @@ DFS was very quick as it was very similar to BFS, it just used a stack instead o
 Achieved/
 
 - finished DFS file although it looks mostly like the BFS file
+
+
+### LOG 6 : August 6th
+
+Notes/
+
+Astar was a new algorithm for me as it was not taught in my university's Data algorithms course, however after learning it I realised it was a very strong algorithm and very fast algorithm while also accurate. I also realised that Dijkstra was not implementable in this grid as it is unweighted, Dijstra acts like BFS in an unweighted graph so no point implementing it right now.
+
+I need to start implemented wall functionality now, and grid cleanup after a search algorithm has ended
+
+Acheived/
+
+- completed Astar search, definitely the fastest search algorithm right now

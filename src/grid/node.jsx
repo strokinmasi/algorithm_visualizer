@@ -2,7 +2,7 @@ import "./node.css";
 
 import { default as React } from 'react';
 
-function Node({ onClick, prevnode, type, row, column }) {
+function Node({ onClick, prevnode, type, row, column, distfromstart }) {
 
     return (
         <div
@@ -11,6 +11,7 @@ function Node({ onClick, prevnode, type, row, column }) {
             prevnode={prevnode}
             row={row}
             column={column}
+            distfromstart={distfromstart}
         />
     )
 }
