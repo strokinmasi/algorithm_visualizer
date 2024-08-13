@@ -18,33 +18,34 @@ function Gridbase() {
 
     const [nodeType, setNodeType] = useState('default');
 
-    const initialNode = (row, col) => ({
+    const initialNode = (x, y) => ({
         type: "default",
         prevnode: null,
-        row: row,
-        column: col,
+        x: x,
+        y: y,
         distfromstart: 0
     });
 
     // useEffect that initialises and also updates the grid everytime the dimensions change
 
     useEffect(() => {
-        const initialGrid = Array(rowLength).fill(null).map((_, rowIndex) => 
-            Array(colLength).fill(null).map((_, colIndex) => initialNode(rowIndex, colIndex))
+        const initialGrid = Array(rowLength).fill(null).map((_, yIndex) => 
+            Array(colLength).fill(null).map((_, xIndex) => initialNode(xIndex, yIndex))
         );
         setGrid(initialGrid);
     }, [rowLength, colLength]);
     
 
     // Handles what happens when a node is clicked
-    const handleNodeClick = (row, col) => {
+    const handleNodeClick = (x, y) => {
+        console.log(x, y)
         if ((checkNodeType(grid, 'start') && nodeType === 'start') || (checkNodeType(grid, 'end') && nodeType === 'end')) {
             return alert('stop! start or stop already exists!')
         }
         // Create a new grid with updated properties for the clicked node
-        const newGrid = grid.map((rowArray, rowIndex) =>
-            rowArray.map((node, colIndex) => {
-                if (rowIndex === row && colIndex === col) {
+        const newGrid = grid.map((row, yIndex) =>
+            row.map((node, xIndex) => {
+                if (xIndex === x && yIndex === y) {
                     // Toggle type
                     return { ...node, type: nodeType};
                 }
@@ -76,16 +77,16 @@ function Gridbase() {
             <button onClick={() => setNodeType('start')}>Place Start Node</button>
             <button onClick={() => setNodeType('end')}>Place End Node</button>
             <button onClick={() => setNodeType('default')}>Delete Node</button>
-            {grid.map((row, rowIndex) => (
-                <div className="row" key={`row-${rowIndex}`}>
-                    {row.map((node, colIndex) => (
+            {grid.map((row, yIndex) => (
+                <div className="row" key={`row-${yIndex}`}>
+                    {row.map((node, xIndex) => (
                         <Node
-                            key={`${rowIndex}-${colIndex}`}
-                            onClick={() => handleNodeClick(rowIndex, colIndex)}
+                            key={`${xIndex}-${yIndex}`}
+                            onClick={() => handleNodeClick(xIndex, yIndex)}
                             type={node.type}
                             prevnode={node.prevnode}
-                            row={rowIndex}
-                            column={colIndex}
+                            x={node.x}
+                            y={node.y}
                         />
                     ))}
                 </div>

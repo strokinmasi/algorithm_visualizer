@@ -1,4 +1,4 @@
-import { checkEnd, delay, findNodeByCoord, findNodeByType } from '../grid/gridutils';
+import { checkEnd, delay, findNodeByCoord, findNodeByType, pathfindingCleanup } from '../grid/gridutils';
 
 async function DFS(grid, setGrid) {
 
@@ -21,22 +21,21 @@ async function DFS(grid, setGrid) {
             }  
             stack.shift();
 
-            const row = currentNode.row
-            const col = currentNode.column
+            const x = currentNode.x
+            const y = currentNode.y
 
             const cardinallyAdjacentCoords = [
-                [row - 1, col],
-                [row, col + 1],
-                [row + 1, col],
-                [row, col - 1],
+                [x, y + 1],
+                [x + 1, y],
+                [x, y - 1],
+                [x - 1, y],
             ];
 
             for (let coords of cardinallyAdjacentCoords) {
                 const adjacentNode = findNodeByCoord(grid, coords[0], coords[1])
                 if (adjacentNode &&
-                    !visited.has(adjacentNode) &&
                     !stack.includes(adjacentNode) &&
-                    adjacentNode.type !== 'start') {
+                    (adjacentNode.type === 'default' || adjacentNode.type === 'end')) {
                     adjacentNode.prevnode = currentNode
                     stack.unshift(adjacentNode)
                 }
@@ -71,6 +70,7 @@ async function DFS(grid, setGrid) {
     
     }
 
+    pathfindingCleanup(grid, setGrid);
     await DFS();
     if (checkEnd(stack)) {
         await pathing();

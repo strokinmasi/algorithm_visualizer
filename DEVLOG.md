@@ -11,8 +11,6 @@ Overall with this project I want to simply achieve :>
 
 current goals, updated with every future log update :>
 
-- need to implement wall functionality
-- need to implement grid cleanup after a pathfinding alrgorithm has been run
 - need to implement material-ui
 - need to write tests :(
 
@@ -79,7 +77,7 @@ Achieved/
 - finished DFS file although it looks mostly like the BFS file
 
 
-### LOG 6 : August 6th
+### LOG 7 : August 6th
 
 Notes/
 
@@ -91,7 +89,7 @@ Acheived/
 
 - completed Astar search, definitely the fastest search algorithm right now
 
-### LOG 6 : August 14th
+### LOG 8 : August 14th
 
 Notes/
 
@@ -100,3 +98,15 @@ Wrote the first test just to setup the features, decided to use vitest as it was
 Acheived/
 
 - wrote the first test and also setup all of vistest
+
+### LOG 9 : August 14th
+
+Notes/
+
+Turns out walls were very easy to implement, I just had to change a single if statement, so it wasn't a big task at all. The same was the case for the grid cleanup, just remove all visited and path nodes and it was cleaned up. Finally, I renamed the coordinate system to use x-axis and y-axis rather than rows and columns. Much easier to use x and y in grid structures.
+
+Acheived/
+
+- finished implementing wall functionality
+- finished introducing grid cleanup
+- replaced grid rows and columns with x-axis and y-axis

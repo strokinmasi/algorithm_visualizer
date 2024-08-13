@@ -9,10 +9,10 @@ export const findNodeByType = (grid, type) => {
     return null;
 }
 
-export const findNodeByCoord = (grid, row, col) => {
-    for (let rowIndex of grid) {
-        for (let node of rowIndex) {
-            if (node.row === row && node.column === col) {
+export const findNodeByCoord = (grid, x, y) => {
+    for (let row of grid) {
+        for (let node of row) {
+            if (node.x === x && node.y === y) {
                 return node;
             }
         }
@@ -38,6 +38,18 @@ export const checkEnd = (list) => {
         }
     }
     return false;
+}
+
+export function pathfindingCleanup(grid, setGrid) {
+    const newGrid = [...grid]
+    for (let row of newGrid) {
+        for (let node of row) {
+            if (node.type === 'visited' || node.type === 'path') {
+                node.type = 'default'
+            }
+        }
+    }
+    setGrid([...newGrid]);
 }
 
 export const delay = (ms) => {

@@ -2,15 +2,15 @@ import "./node.css";
 
 import { default as React } from 'react';
 
-function Node({ onClick, prevnode, type, row, column, distfromstart }) {
+function Node({ onClick, prevnode, type, x, y, distfromstart }) {
 
     return (
         <div
             onClick={onClick}
             className={`${type} node`}
             prevnode={prevnode}
-            row={row}
-            column={column}
+            x={x}
+            y={y}
             distfromstart={distfromstart}
         />
     )

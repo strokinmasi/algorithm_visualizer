@@ -1,4 +1,4 @@
-import { checkEnd, delay, findNodeByCoord, findNodeByType } from '../grid/gridutils';
+import { checkEnd, delay, findNodeByCoord, findNodeByType, pathfindingCleanup } from '../grid/gridutils';
 
 async function Astar(grid, setGrid) {
 
@@ -10,7 +10,7 @@ async function Astar(grid, setGrid) {
     }
 
     const manhattanHeuristic = (node) => {
-        return Math.abs(node.row - end.row) + Math.abs(node.column - end.column)
+        return Math.abs(node.x - end.x) + Math.abs(node.y - end.y)
     }
 
     const compareFscore = (node1, node2) => {
@@ -39,22 +39,21 @@ async function Astar(grid, setGrid) {
             const index = searching.indexOf(currentNode)
             searching.splice(index, 1);
 
-            const row = currentNode.row
-            const col = currentNode.column
+            const x = currentNode.x
+            const y = currentNode.y
 
             const cardinallyAdjacentCoords = [
-                [row - 1, col],
-                [row, col + 1],
-                [row + 1, col],
-                [row, col - 1],
+                [x, y + 1],
+                [x + 1, y],
+                [x, y - 1],
+                [x - 1, y],
             ];
 
             for (let coords of cardinallyAdjacentCoords) {
                 const adjacentNode = findNodeByCoord(grid, coords[0], coords[1])
                 if (adjacentNode &&
-                    !visited.has(adjacentNode) &&
                     !searching.includes(adjacentNode) &&
-                    adjacentNode.type !== 'start') {
+                    (adjacentNode.type === 'default' || adjacentNode.type === 'end')) {
                     adjacentNode.prevnode = currentNode
                     if (adjacentNode.distfromstart > currentNode.distfromstart + 1 || adjacentNode.distfromstart === 0) {
                         adjacentNode.distfromstart = currentNode.distfromstart + 1
@@ -92,8 +91,7 @@ async function Astar(grid, setGrid) {
     
     }
 
-    Astar()
-
+    pathfindingCleanup(grid, setGrid);
     await Astar();
     if (checkEnd(searching)) {
         await pathing();
