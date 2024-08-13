@@ -90,7 +90,7 @@ function Gridbase() {
                     ))}
                 </div>
             ))}
-            <div style={{ backgroundColor: 'grey' }}>{rowLength}x{colLength}</div>
+            <section style={{ backgroundColor: 'grey' }}>{rowLength}x{colLength}</section>
         </div>
     );
 }

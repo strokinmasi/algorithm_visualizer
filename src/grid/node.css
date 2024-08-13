@@ -18,9 +18,9 @@
 }
 
 .visited {
-    background-color: purple; /* Example color for visited nodes */
+    background-color: purple;
 }
 
 .path {
-    background-color: yellow;
+    background-color: yellow;     
 }

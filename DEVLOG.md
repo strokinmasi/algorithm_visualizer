@@ -12,8 +12,9 @@ Overall with this project I want to simply achieve :>
 current goals, updated with every future log update :>
 
 - need to implement wall functionality
+- need to implement grid cleanup after a pathfinding alrgorithm has been run
 - need to implement material-ui
-- need to implement grid cleanup after every search algorithm run
+- need to write tests :(
 
 # LOGS
 
@@ -89,3 +90,13 @@ I need to start implemented wall functionality now, and grid cleanup after a sea
 Acheived/
 
 - completed Astar search, definitely the fastest search algorithm right now
+
+### LOG 6 : August 14th
+
+Notes/
+
+Wrote the first test just to setup the features, decided to use vitest as it was the most up to date tester with the best features. Will have to learn how to use it.
+
+Acheived/
+
+- wrote the first test and also setup all of vistest
