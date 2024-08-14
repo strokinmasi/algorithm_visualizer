@@ -20,6 +20,18 @@ export const findNodeByCoord = (grid, x, y) => {
     return null;
 }
 
+export const updateGridNode = (grid, setGrid, x, y, newType) => {
+    const newGrid = grid.map((row, yIndex) =>
+        row.map((node, xIndex) => {
+            if (xIndex === x && yIndex === y) {
+                return { ...node, type: newType };
+            }
+            return node;
+        })
+    );
+    setGrid(newGrid);
+};
+
 export const checkNodeType = (grid, type) => {
     for (let row of grid) {
         for (let node of row) {

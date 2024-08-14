@@ -110,3 +110,14 @@ Acheived/
 - finished implementing wall functionality
 - finished introducing grid cleanup
 - replaced grid rows and columns with x-axis and y-axis
+
+
+### LOG 10 : August 14th
+
+Notes/
+
+Quick one, managed to introduce click and drag node placement, making it easier to draw walls rather than having to individually click on each node. Now you can just click and drag and paint your walls. Suprisingly easier than I expected, just some simple onMouse synthetic react events.
+
+Acheived/
+
+- implemented click and drag node placement

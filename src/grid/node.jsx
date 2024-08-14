@@ -2,16 +2,19 @@ import "./node.css";
 
 import { default as React } from 'react';
 
-function Node({ onClick, prevnode, type, x, y, distfromstart }) {
-
+function Node({ onMouseDown, onMouseEnter, onMouseUp, prevnode, type, x, y, distfromstart }) {
+    
     return (
         <div
-            onClick={onClick}
+            onMouseDown={onMouseDown}
+            onMouseEnter={onMouseEnter}
+            onMouseUp={onMouseUp}
             className={`${type} node`}
             prevnode={prevnode}
             x={x}
             y={y}
             distfromstart={distfromstart}
+            onMouse
         />
     )
 }

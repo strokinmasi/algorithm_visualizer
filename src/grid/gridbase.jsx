@@ -17,6 +17,7 @@ function Gridbase() {
     const [colLength, setColLength] = useState(10);
 
     const [nodeType, setNodeType] = useState('default');
+    const [isMouseDown, setMouseDown] = useState(false);
 
     const initialNode = (x, y) => ({
         type: "default",
@@ -42,12 +43,14 @@ function Gridbase() {
         if ((checkNodeType(grid, 'start') && nodeType === 'start') || (checkNodeType(grid, 'end') && nodeType === 'end')) {
             return alert('stop! start or stop already exists!')
         }
-        // Create a new grid with updated properties for the clicked node
+        updateGridNode(x, y, nodeType);
+    };
+
+    const updateGridNode = (x, y, newType) => {
         const newGrid = grid.map((row, yIndex) =>
             row.map((node, xIndex) => {
                 if (xIndex === x && yIndex === y) {
-                    // Toggle type
-                    return { ...node, type: nodeType};
+                    return { ...node, type: newType };
                 }
                 return node;
             })
@@ -67,6 +70,21 @@ function Gridbase() {
         Astar(grid, setGrid);
     };
 
+    const handleMouseDown = (x, y) => {
+        handleNodeClick(x, y);
+        setMouseDown(true);
+    };
+
+    const handleMouseEnter = (x, y) => {
+        if (!isMouseDown) return;
+        handleNodeClick(x, y);
+    };
+
+    const handleMouseUp = () => {
+        setMouseDown(false);
+    };
+
+
     return (
         <div className="grid">
             <button onClick={handleBFS}>Run BFS</button>
@@ -82,7 +100,9 @@ function Gridbase() {
                     {row.map((node, xIndex) => (
                         <Node
                             key={`${xIndex}-${yIndex}`}
-                            onClick={() => handleNodeClick(xIndex, yIndex)}
+                            onMouseDown={() => handleMouseDown(xIndex, yIndex)}
+                            onMouseEnter={() => handleMouseEnter(xIndex, yIndex)}
+                            onMouseUp={handleMouseUp}
                             type={node.type}
                             prevnode={node.prevnode}
                             x={node.x}
