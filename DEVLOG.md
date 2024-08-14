@@ -9,11 +9,6 @@ Overall with this project I want to simply achieve :>
 - I want to learn to use react and useStates etc
 - I want to learn javascript, a very common coding language that can be used for a variety of tasks
 
-current goals, updated with every future log update :>
-
-- need to implement material-ui
-- need to write tests :(
-
 # LOGS
 
 ### LOG 1 : July 30th
@@ -122,6 +117,7 @@ Acheived/
 
 - implemented click and drag node placement
 
+
 ### LOG 11 : August 15th
 
 Notes/
@@ -132,3 +128,23 @@ Acheived/
 
 - fixed click and drag node placement
 - introduced a toolbar, just seperated the buttons from the grid
+
+
+### LOG 12 : August 15th
+
+Notes/
+
+Now that we have basic stable functionality for the visualizer, we need some more advanced visuals. For this I will be using material UI, and I have installed it now. I will be including goals in each log from now on, this log was just a simple workflow update.
+
+Goals/
+
+- need to implement material ui to current components :
+    - I need to create a neat and unqiue page design that will hold my creation
+    - I need to create a visual toolbar for all the buttons
+    - I need to create smaller and more visually pleasing nodes
+- need to create a slider for the grid size, I cannot keep using the number input
+- need to write tests :(
+
+Achieved/
+
+- no code updates
