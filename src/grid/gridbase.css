@@ -1,6 +1,9 @@
 .grid {
-    display: flex;
+    display: inline-flex;
     flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid #ff0000;
 }
 
 .row {

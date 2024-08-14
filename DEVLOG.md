@@ -121,3 +121,14 @@ Quick one, managed to introduce click and drag node placement, making it easier 
 Acheived/
 
 - implemented click and drag node placement
+
+### LOG 11 : August 15th
+
+Notes/
+
+Clicking and dragging outside the grid would skip the onMouseUp event and hence the mouse would be stuck in a mouse down state indefinitely. To fix this, I introduced a onMouseLeave on the grid box to trigger whenever the mouse left the grid box to set the isMouseDown to false. I also moved all the buttons into a toolbar except the grid size changer as it works seperately from everything else
+
+Acheived/
+
+- fixed click and drag node placement
+- introduced a toolbar, just seperated the buttons from the grid
