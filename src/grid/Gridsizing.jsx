@@ -1,3 +1,4 @@
+import { Button, Container, Input } from '@mui/material';
 import React, { useState } from 'react';
 
 function Gridsizing({ setRowLength, setColLength }) {
@@ -20,16 +21,16 @@ function Gridsizing({ setRowLength, setColLength }) {
     };
 
     return (
-        <div>
-            <input
+        <Container>
+            <Input
                 type="number"
                 value={input}
                 onChange={(e) => handleInputChange(e, setInput)}
                 placeholder="Enter number of rows"
             />
-            <button onClick={() => handleGridUpdateClick(setRowLength, "row")}>Set Row Length</button>
-            <button onClick={() => handleGridUpdateClick(setColLength, "column")}>Set Column Length</button>
-        </div>
+            <Button onClick={() => handleGridUpdateClick(setRowLength, "row")}>Set Row Length</Button>
+            <Button onClick={() => handleGridUpdateClick(setColLength, "column")}>Set Column Length</Button>
+        </Container>
     );
 }
 

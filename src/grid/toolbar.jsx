@@ -1,3 +1,4 @@
+import { Button, Container } from '@mui/material';
 import React from 'react';
 import Astar from '../algorithms/Astar';
 import BFS from '../algorithms/BFS';
@@ -18,15 +19,15 @@ function Toolbar({ grid, setGrid, setNodeType }) {
     };
 
     return (
-        <div>
-            <button onClick={handleBFS}>Run BFS</button>
-            <button onClick={handleDFS}>Run DFS</button>
-            <button onClick={handleAstar}>Run Astar</button>
-            <button onClick={() => setNodeType('wall')}>Place Wall Node</button>
-            <button onClick={() => setNodeType('start')}>Place Start Node</button>
-            <button onClick={() => setNodeType('end')}>Place End Node</button>
-            <button onClick={() => setNodeType('default')}>Delete Node</button>
-        </div>
+        <Container>
+            <Button onClick={handleBFS}>Run BFS</Button>
+            <Button onClick={handleDFS}>Run DFS</Button>
+            <Button onClick={handleAstar}>Run Astar</Button>
+            <Button onClick={() => setNodeType('wall')}>Place Wall Node</Button>
+            <Button onClick={() => setNodeType('start')}>Place Start Node</Button>
+            <Button onClick={() => setNodeType('end')}>Place End Node</Button>
+            <Button onClick={() => setNodeType('default')}>Delete Node</Button>
+        </Container>
     );
 }
 

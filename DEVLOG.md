@@ -134,11 +134,11 @@ Acheived/
 
 Notes/
 
-Now that we have basic stable functionality for the visualizer, we need some more advanced visuals. For this I will be using material UI, and I have installed it now. I will be including goals in each log from now on, this log was just a simple workflow update.
+Now that we have basic stable functionality for the visualizer, we need some more advanced visuals. For this I will be using Material UI, and I have installed it now. I will be including goals in each log from now on, this log was just a simple workflow update.
 
 Goals/
 
-- need to implement material ui to current components :
+- need to implement Material ui to current components :
     - I need to create a neat and unqiue page design that will hold my creation
     - I need to create a visual toolbar for all the buttons
     - I need to create smaller and more visually pleasing nodes
@@ -148,3 +148,24 @@ Goals/
 Achieved/
 
 - no code updates
+
+### LOG 13 : August 16th
+
+Notes/
+
+Started Material UI implementation, simply just created a theme and then replaced basic react components with MUI components to quickly and simply upgrade the basic UI for the page. Also added a LICENSE and updated the read me page to be more presentable.
+
+Goals/
+
+- need to FINISH implementing Material ui to current components :
+    - I need to create a neat and unqiue page design that will hold my creation
+    - I need to create a visual toolbar for all the buttons
+    - I need to create smaller and more visually pleasing nodes
+- need to create a slider for the grid size, I cannot keep using the number input
+- need to write tests :(
+
+    Achieved/
+
+- updated and cleaned the README page
+- started implementing Material UI
+- introduced a custom theme using Material UI

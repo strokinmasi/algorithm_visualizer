@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import './gridbase.css';
 import Gridsizing from './gridsizing';
@@ -65,7 +66,10 @@ function Gridbase() {
     };
 
     return (
-        <div>
+        <Container sx={{
+            bgcolor:"#333333", 
+            height: "100vh",
+          }}>
             <Toolbar grid={grid} setGrid= {setGrid} setNodeType={setNodeType}/>
             <Gridsizing setRowLength={setRowLength} setColLength={setColLength}/>
             <div className="grid" onMouseLeave={handleMouseLeave}>
@@ -86,8 +90,8 @@ function Gridbase() {
                     </div>
                 ))}
             </div>
-            <section style={{ backgroundColor: 'grey' }}>{rowLength}x{colLength}</section>
-        </div>
+            <Container>{rowLength}x{colLength}</Container>
+        </Container>
     );
 }
 
