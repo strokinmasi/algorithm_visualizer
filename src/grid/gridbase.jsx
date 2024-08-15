@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import './gridbase.css';
 import Gridsizing from './gridsizing';
@@ -67,14 +67,32 @@ function Gridbase() {
 
     return (
         <Container sx={{
-            bgcolor:"#333333", 
-            height: "100vh",
-          }}>
-            <Toolbar grid={grid} setGrid= {setGrid} setNodeType={setNodeType}/>
+            bgcolor: '#333333',
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent:'space-around',
+            alignItems: 'center',
+        }}>
+            <Toolbar grid={grid} setGrid={setGrid} setNodeType={setNodeType}/>
             <Gridsizing setRowLength={setRowLength} setColLength={setColLength}/>
-            <div className="grid" onMouseLeave={handleMouseLeave}>
+            
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'column-reverse',
+                justifyContent: 'center',
+                alignItems: 'center',
+                border: '10px solid #ff0000',
+                width: 'fit-content',
+                height: 'fit-content',
+                marginTop: '20px'
+            }} onMouseLeave={handleMouseLeave}>
                 {grid.map((row, yIndex) => (
-                    <div className="row" key={`row-${yIndex}`}>
+                    <Box sx={{
+                        display: 'flex',
+                        p: 0,
+                        m: 0,
+                    }} key={`row-${yIndex}`}>
                         {row.map((node, xIndex) => (
                             <Node
                                 key={`${xIndex}-${yIndex}`}
@@ -87,10 +105,12 @@ function Gridbase() {
                                 y={node.y}
                             />
                         ))}
-                    </div>
+                    </Box>
                 ))}
-            </div>
-            <Container>{rowLength}x{colLength}</Container>
+            </Box>
+            <Box sx={{ color: 'primary.main' }}>
+                {rowLength}x{colLength}
+            </Box>
         </Container>
     );
 }

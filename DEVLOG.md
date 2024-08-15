@@ -164,8 +164,29 @@ Goals/
 - need to create a slider for the grid size, I cannot keep using the number input
 - need to write tests :(
 
-    Achieved/
+Achieved/
 
 - updated and cleaned the README page
 - started implementing Material UI
 - introduced a custom theme using Material UI
+
+### LOG 14 : August 16th
+
+Notes/
+
+Implemented more Material UI and this time setup the main page, the layout of the page is somewhat acceptable now, everythign is spaced evenly and is somewhat responsive. I also added pictures of functionality to the README.
+
+Goals/
+
+- need to implement a way to change the animation speed
+- need to FINISH implementing Material ui to current components :
+    - I need to create a neat and unqiue page design that will hold my creation
+    - I need to create a visual toolbar for all the buttons
+    - I need to create smaller and more visually pleasing nodes
+- need to create a slider for the grid size, I cannot keep using the number input
+- need to write tests :(
+
+Achieved/
+
+- updated and the README page to include example functionality photos
+- started implementing more Material UI

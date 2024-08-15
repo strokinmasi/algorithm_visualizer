@@ -1,4 +1,4 @@
-import { Button, Container, Input } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 function Gridsizing({ setRowLength, setColLength }) {
@@ -21,16 +21,26 @@ function Gridsizing({ setRowLength, setColLength }) {
     };
 
     return (
-        <Container>
-            <Input
+        <Box sx={{
+            bgcolor: '#333333',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent:'space-around',
+            alignItems: 'center',
+        }}>
+            <TextField
+                variant="outlined"
                 type="number"
+                sx={{
+                    backgroundColor: 'white',
+                }}
                 value={input}
                 onChange={(e) => handleInputChange(e, setInput)}
                 placeholder="Enter number of rows"
             />
             <Button onClick={() => handleGridUpdateClick(setRowLength, "row")}>Set Row Length</Button>
             <Button onClick={() => handleGridUpdateClick(setColLength, "column")}>Set Column Length</Button>
-        </Container>
+        </Box>
     );
 }
 
