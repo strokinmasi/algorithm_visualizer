@@ -1,6 +1,5 @@
-import { Box, Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import './gridbase.css';
 import Gridsizing from './gridsizing';
 import { checkNodeType } from './gridutils';
 import Node from './node';
@@ -10,8 +9,8 @@ function Gridbase() {
 
     const [grid, setGrid] = useState([]);
 
-    const [rowLength, setRowLength] = useState(10);
-    const [colLength, setColLength] = useState(10);
+    const [rowLength, setRowLength] = useState(20);
+    const [colLength, setColLength] = useState(20);
 
     const [nodeType, setNodeType] = useState('default');
     const [isMouseDown, setMouseDown] = useState(false);
@@ -82,7 +81,7 @@ function Gridbase() {
                 flexDirection: 'column-reverse',
                 justifyContent: 'center',
                 alignItems: 'center',
-                border: '10px solid #ff0000',
+                border: '5px solid black',
                 width: 'fit-content',
                 height: 'fit-content',
                 marginTop: '20px'
@@ -108,9 +107,7 @@ function Gridbase() {
                     </Box>
                 ))}
             </Box>
-            <Box sx={{ color: 'primary.main' }}>
-                {rowLength}x{colLength}
-            </Box>
+            <Typography sx={{ color: 'primary.main' }} >{rowLength} ✖ {colLength}</Typography>
         </Container>
     );
 }

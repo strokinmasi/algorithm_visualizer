@@ -1,6 +1,6 @@
 ### Algorithm Visualizer
 
-This project is a web-based pathfinding visualizer built using React and Material-UI. It allows users to interactively visualize the execution of different pathfinding algorithms on a grid. The project includes implementations of Depth-First Search (DFS), Breadth-First Search (BFS), and A* algorithms.
+This project is a web-based pathfinding visualizer built using React and Material-UI. It allows users to interactively visualize the execution of different pathfinding algorithms on a grid. The project includes implementations of Depth-First Search (DFS), Breadth-First Search (BFS), and A* algorithms
 
 ## Setup
 
@@ -39,13 +39,15 @@ to install all dependancies:
 most recent functionality examples:
 
 BFS search
-![alt text](image.png)
+![alt text](photos/image-4.png)
 
 DFS search
-![alt text](image-2.png)
+![alt text](photos/image-5.png)
 
 Astar search
-![alt text](image-1.png)
+![alt text](photos/image-6.png)
+
+more examples are avaliable in the photos folder
 
 ## Development Logs
 
@@ -53,4 +55,4 @@ For my work progress, check out [DEVLOG.md](DEVLOG.md) :)
 
 ## License
 
-This project is open-source and available under the MIT License.
+This project is open-source and available under the MIT License

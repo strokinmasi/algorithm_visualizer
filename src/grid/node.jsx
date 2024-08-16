@@ -1,22 +1,41 @@
-import "./node.css";
-
-import { default as React } from 'react';
+import { Box } from '@mui/material';
+import React from 'react';
 
 function Node({ onMouseDown, onMouseEnter, onMouseUp, prevnode, type, x, y, distfromstart }) {
-    
+    const getBackgroundColor = (type) => {
+        switch (type) {
+            case 'start':
+                return 'blue';
+            case 'end':
+                return 'red';
+            case 'wall':
+                return 'black';
+            case 'visited':
+                return 'purple';
+            case 'path':
+                return 'yellow';
+            default:
+                return 'grey'; // Default color for unspecified types
+        }
+    };
+
     return (
-        <div
+        <Box
+            x={x}
+            y={y}
             onMouseDown={onMouseDown}
             onMouseEnter={onMouseEnter}
             onMouseUp={onMouseUp}
-            className={`${type} node`}
+            sx={{
+                width: '20px',
+                height: '20px',
+                backgroundColor: getBackgroundColor(type),
+                border: '1px solid black',
+            }}
             prevnode={prevnode}
-            x={x}
-            y={y}
             distfromstart={distfromstart}
-            onMouse
         />
-    )
+    );
 }
 
-export default Node
+export default Node;

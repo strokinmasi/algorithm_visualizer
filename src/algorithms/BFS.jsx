@@ -1,6 +1,6 @@
 import { checkEnd, delay, findNodeByCoord, findNodeByType, pathfindingCleanup } from '../grid/gridutils';
 
-async function BFS(grid, setGrid) {
+async function BFS(grid, setGrid, animationSpeed) {
 
     const start = findNodeByType(grid, 'start');
     const end = findNodeByType(grid, 'end');
@@ -49,7 +49,7 @@ async function BFS(grid, setGrid) {
                 }
             }
             setGrid([...newGrid]);
-            await delay(50);
+            await delay(animationSpeed);
         }
     }
 
@@ -65,7 +65,7 @@ async function BFS(grid, setGrid) {
                 }))
             );
             setGrid(newGrid);
-            await delay(50);
+            await delay(animationSpeed);
         }
     
     }

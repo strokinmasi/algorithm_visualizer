@@ -1,6 +1,6 @@
 import { checkEnd, delay, findNodeByCoord, findNodeByType, pathfindingCleanup } from '../grid/gridutils';
 
-async function Astar(grid, setGrid) {
+async function Astar(grid, setGrid, animationSpeed) {
 
     const start = findNodeByType(grid, 'start');
     const end = findNodeByType(grid, 'end');
@@ -70,7 +70,7 @@ async function Astar(grid, setGrid) {
                 }
             }
             setGrid([...newGrid]);
-            await delay(50);
+            await delay(animationSpeed);
         }
     }
 
@@ -86,7 +86,7 @@ async function Astar(grid, setGrid) {
                 }))
             );
             setGrid(newGrid);
-            await delay(50);
+            await delay(animationSpeed);
         }
     
     }

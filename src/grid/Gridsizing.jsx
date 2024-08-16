@@ -24,19 +24,16 @@ function Gridsizing({ setRowLength, setColLength }) {
         <Box sx={{
             bgcolor: '#333333',
             display: 'flex',
-            flexDirection: 'column',
             justifyContent:'space-around',
+            gap: '10px',
             alignItems: 'center',
         }}>
             <TextField
                 variant="outlined"
                 type="number"
-                sx={{
-                    backgroundColor: 'white',
-                }}
                 value={input}
                 onChange={(e) => handleInputChange(e, setInput)}
-                placeholder="Enter number of rows"
+                placeholder="SET LENGTH"
             />
             <Button onClick={() => handleGridUpdateClick(setRowLength, "row")}>Set Row Length</Button>
             <Button onClick={() => handleGridUpdateClick(setColLength, "column")}>Set Column Length</Button>
